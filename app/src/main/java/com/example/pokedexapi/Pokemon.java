@@ -19,6 +19,9 @@ public class Pokemon {
     @SerializedName("types")
     private List<Type> types;
 
+    @SerializedName("moves")
+    private List<MoveInfo> moves;
+
     public class Sprites {
         @SerializedName("front_default")
         private String frontDefault;
@@ -46,6 +49,24 @@ public class Pokemon {
         }
     }
 
+    public class MoveInfo {
+        @SerializedName("move")
+        private Move move;
+
+        public Move getMove() {
+            return move;
+        }
+    }
+
+    public class Move {
+        @SerializedName("name")
+        private String name;
+
+        public String getName() {
+            return name;
+        }
+    }
+
     public String getName() {
         return name;
     }
@@ -64,6 +85,10 @@ public class Pokemon {
 
     public List<Type> getTypes() {
         return types;
+    }
+
+    public List<MoveInfo> getMoves() {
+        return moves;
     }
 }
 

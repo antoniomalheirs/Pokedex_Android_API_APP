@@ -45,6 +45,7 @@ public class PokemonAdapter extends BaseAdapter {
         ImageView pokemonImageView = convertView.findViewById(R.id.pokemonImageView);
         TextView pokemonNameTextView = convertView.findViewById(R.id.pokemonNameTextView);
         TextView pokemonTypeView = convertView.findViewById(R.id.pokemonTypeView);
+        TextView pokemonMoveView = convertView.findViewById(R.id.pokemonMoveView);
 
         Pokemon pokemon = pokemonList.get(position);
 
@@ -60,6 +61,22 @@ public class PokemonAdapter extends BaseAdapter {
             }
         }
         pokemonTypeView.setText(types);
+
+        String moves = "Movimentos: ";
+        List<Pokemon.MoveInfo> moveList = pokemon.getMoves();
+        int numberOfMovesToDisplay = Math.min(10, moveList.size()); // Limita a exibição a 10 movimentos ou ao número de movimentos disponíveis
+
+        for (int i = 0; i < numberOfMovesToDisplay; i++) {
+            String moveName = moveList.get(i).getMove().getName();
+            moves += moveName;
+            if (i < numberOfMovesToDisplay - 1) {
+                moves += ", ";
+            }
+        }
+
+        pokemonMoveView.setText(moves);
+
+
 
         // Carrega a imagem do Pokémon usando Glide
         String imageUrl = pokemon.getFrontImage();
