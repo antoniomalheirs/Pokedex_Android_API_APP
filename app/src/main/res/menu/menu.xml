@@ -1,0 +1,53 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/n1th"
+            android:icon="@drawable/ic_launcher_foreground"
+            android:title="Pokedex 1th"
+            />
+
+        <item
+            android:id="@+id/n2th"
+            android:icon="@drawable/ic_launcher_foreground"
+            android:title="Pokedex 2th"
+            />
+
+        <item
+            android:id="@+id/n3th"
+            android:icon="@drawable/ic_launcher_foreground"
+            android:title="Pokedex 3th"
+            />
+
+        <item
+            android:id="@+id/n4th"
+            android:icon="@drawable/ic_launcher_foreground"
+            android:title="Pokedex 4th" />
+
+        <item
+            android:id="@+id/n5th"
+            android:icon="@drawable/ic_launcher_foreground"
+            android:title="Pokedex 5th"
+            />
+
+        <item
+            android:id="@+id/n6th"
+            android:icon="@drawable/ic_launcher_foreground"
+            android:title="Pokedex 6th"
+            />
+
+        <item
+            android:id="@+id/n7th"
+            android:icon="@drawable/ic_launcher_foreground"
+            android:title="Pokedex 7th"
+            />
+
+        <item
+            android:id="@+id/n8th"
+            android:icon="@drawable/ic_launcher_foreground"
+            android:title="Pokedex 8th"
+            />
+
+    </group>
+
+</menu>
