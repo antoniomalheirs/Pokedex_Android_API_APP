@@ -8,14 +8,19 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class PokemonService {
     private static final String BASE_URL = "https://pokeapi.co/api/v2/";
     private PokeApiService apiService;
+    private Retrofit retrofit;
 
     public PokemonService() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
 
-        apiService = retrofit.create(PokeApiService.class);
+        if (retrofit == null)
+        {
+            retrofit = new Retrofit.Builder()
+                    .baseUrl(BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+
+            apiService = retrofit.create(PokeApiService.class);
+        }
     }
 
     public void getPokemon(int pokemonId, final PokemonCallback callback) {

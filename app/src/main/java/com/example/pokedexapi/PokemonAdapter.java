@@ -50,7 +50,7 @@ public class PokemonAdapter extends BaseAdapter {
         Pokemon pokemon = pokemonList.get(position);
 
         // Define o nome do Pokémon
-        pokemonNameTextView.setText(pokemon.getName());
+        pokemonNameTextView.setText("Nome: " + pokemon.getName());
         String types = "Tipo(s): ";
         List<Pokemon.Type> typeList = pokemon.getTypes();
         for (int i = 0; i < typeList.size(); i++) {

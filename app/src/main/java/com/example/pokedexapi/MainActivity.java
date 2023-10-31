@@ -3,6 +3,7 @@ package com.example.pokedexapi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.viewpager.widget.ViewPager;
 
 
 import android.content.Intent;
@@ -12,10 +13,17 @@ import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ViewPager viewPager;
+    private CarrosselPAdapter pagerAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        viewPager = findViewById(R.id.view_pagerP);
+        pagerAdapter = new CarrosselPAdapter(this);
+
+        viewPager.setAdapter(pagerAdapter);
 
         NavigationView navigationView = findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(item -> {

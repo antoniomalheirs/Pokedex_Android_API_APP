@@ -9,11 +9,50 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
-    <!-- Conteúdo principal -->
-    <FrameLayout
-        android:id="@+id/main_content"
+    <!-- Conteúdo principal, incluindo elementos visuais, abaixo da NavigationView -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></FrameLayout>
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <!-- Adicione seus elementos visuais aqui, como um ViewPager, textos, botões, etc. -->
+
+        <TextView
+            android:id="@+id/appname"
+            android:layout_width="400dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="195dp"
+            android:text="Find your favorite pokemon on Pokedex "
+            android:textAlignment="center"
+            android:textColor="#FF5722"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/view_pagerP"
+            android:layout_width="480dp"
+            android:layout_height="165dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Adicione mais elementos conforme necessário -->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation_view"
