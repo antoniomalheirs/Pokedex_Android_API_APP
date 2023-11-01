@@ -8,6 +8,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -26,8 +27,45 @@ public class MainActivity extends AppCompatActivity {
         CarrosselScroller autoScroll = new CarrosselScroller(this, viewPager); // Substitua 'this' pelo contexto apropriado
         autoScroll.startAutoScroll();
 
-
         viewPager.setAdapter(pagerAdapter);
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            private boolean userInteracted = false;
+            private int lastUserInteractionPosition = 0;
+
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                // Este método é chamado enquanto o usuário está deslizando
+                userInteracted = true;
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                // Este método é chamado quando o usuário seleciona uma página
+                lastUserInteractionPosition = position;
+                userInteracted = true;
+                autoScroll.stopAutoScroll();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                // Este método é chamado quando o estado de rolagem do ViewPager muda
+                if (state == ViewPager.SCROLL_STATE_IDLE) {
+                    // O usuário parou de interagir
+                    if (userInteracted) {
+                        // Se o usuário interagiu, retome o autoscroll a partir da última posição de interação
+                        int currentPosition = viewPager.getCurrentItem();
+                        autoScroll.setCurrentPage(currentPosition);
+                        autoScroll.startAutoScroll();
+                    } else {
+                        // Se o usuário não interagiu, retome o autoscroll a partir da posição atual
+                        autoScroll.startAutoScroll();
+                    }
+                    userInteracted = false;
+                }
+            }
+        });
+
 
         NavigationView navigationView = findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(item -> {

@@ -12,8 +12,8 @@ public class CarrosselScroller {
     private ViewPager viewPager;
     private Timer timer;
     private int currentPage = 0;
-    private final long DELAY_MS = 1500; // Delay inicial em milissegundos (3 segundos neste exemplo)
-    private final long PERIOD_MS = 4000; // Intervalo de troca em milissegundos
+    private final long DELAY_MS = 3000; // Delay inicial em milissegundos (3 segundos neste exemplo)
+    private final long PERIOD_MS = 3000; // Intervalo de troca em milissegundos
 
     public CarrosselScroller(Context context, ViewPager viewPager) {
         this.viewPager = viewPager;
@@ -27,7 +27,7 @@ public class CarrosselScroller {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                handler.post(update);
+                handler.sendEmptyMessage(0);
             }
         }, DELAY_MS, PERIOD_MS);
     }
@@ -38,21 +38,26 @@ public class CarrosselScroller {
         }
     }
 
-    private final Handler handler = new Handler() {
-        public void handleMessage(Message msg) {
-            viewPager.setCurrentItem(currentPage, true);
-        }
-    };
+    public void setCurrentPage(int page) {
+        currentPage = page;
+    }
 
-    private final Runnable update = new Runnable() {
-        public void run() {
+    private final Handler handler = new Handler(new Handler.Callback() {
+        @Override
+        public boolean handleMessage(Message msg) {
             if (currentPage == viewPager.getAdapter().getCount() - 1) {
                 currentPage = 0;
             } else {
                 currentPage++;
             }
             viewPager.setCurrentItem(currentPage, true);
+            return true;
         }
-    };
+    });
 }
+
+
+
+
+
 

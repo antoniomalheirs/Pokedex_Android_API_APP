@@ -35,6 +35,7 @@
         android:layout_height="34dp"
         android:layout_marginStart="48dp"
         android:layout_marginBottom="10dp"
+        android:tag="2"
         android:text="Johto Region"
         android:textAlignment="center"
         android:textColor="#B22222"

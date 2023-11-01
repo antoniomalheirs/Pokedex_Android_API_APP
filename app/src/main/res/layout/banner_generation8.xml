@@ -2,12 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/padrao"
     android:layout_width="478dp"
     android:layout_height="228dp"
     android:padding="0dp"
     android:scaleX="1"
     android:scaleY="1"
-    style="@style/padrao"
+    android:tag="8"
     tools:context=".generation1">
 
     <ImageView
