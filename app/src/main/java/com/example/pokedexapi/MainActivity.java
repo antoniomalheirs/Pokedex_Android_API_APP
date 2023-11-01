@@ -5,17 +5,20 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager.widget.ViewPager;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton; // Importe a classe FloatingActionButton
 
 public class MainActivity extends AppCompatActivity {
 
     public ViewPager viewPager;
     private CarrosselPAdapter pagerAdapter;
+
+    private DrawerLayout drawerLayout;
+    private FloatingActionButton fabOpenNavigation; // Declare o FloatingActionButton
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,10 +27,23 @@ public class MainActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.view_pagerP);
         pagerAdapter = new CarrosselPAdapter(this);
 
-        CarrosselScroller autoScroll = new CarrosselScroller(this, viewPager); // Substitua 'this' pelo contexto apropriado
+        CarrosselScroller autoScroll = new CarrosselScroller(this, viewPager);
         autoScroll.startAutoScroll();
 
         viewPager.setAdapter(pagerAdapter);
+
+        drawerLayout = findViewById(R.id.drawer_layout);
+        fabOpenNavigation = findViewById(R.id.fab_open_navigation); // Inicialize o FloatingActionButton
+
+        fabOpenNavigation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Ao clicar no botão, abra o NavigationView
+                if (!drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                    drawerLayout.openDrawer(GravityCompat.START);
+                }
+            }
+        });
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             private boolean userInteracted = false;
@@ -51,21 +67,17 @@ public class MainActivity extends AppCompatActivity {
             public void onPageScrollStateChanged(int state) {
                 // Este método é chamado quando o estado de rolagem do ViewPager muda
                 if (state == ViewPager.SCROLL_STATE_IDLE) {
-                    // O usuário parou de interagir
                     if (userInteracted) {
-                        // Se o usuário interagiu, retome o autoscroll a partir da última posição de interação
                         int currentPosition = viewPager.getCurrentItem();
                         autoScroll.setCurrentPage(currentPosition);
                         autoScroll.startAutoScroll();
                     } else {
-                        // Se o usuário não interagiu, retome o autoscroll a partir da posição atual
                         autoScroll.startAutoScroll();
                     }
                     userInteracted = false;
                 }
             }
         });
-
 
         NavigationView navigationView = findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(item -> {
@@ -112,10 +124,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
 
-            DrawerLayout drawer = findViewById(R.id.drawer_layout);
-            drawer.closeDrawer(GravityCompat.START);
+            DrawerLayout drawer = findViewById(R.id.drawer_layout);// ... (seu código de manipulação dos itens do NavigationView)
+
+            drawerLayout.closeDrawer(GravityCompat.START);
             return true;
         });
     }
-
 }
