@@ -43,6 +43,27 @@ public class PokemonService {
         });
     }
 
+    public void getPokemonInfoByName(String name, final PokemonCallback callback) {
+        Call<Pokemon> call = apiService.getPokemonInfoByName(name);
+        call.enqueue(new Callback<Pokemon>() {
+            @Override
+            public void onResponse(Call<Pokemon> call, Response<Pokemon> response) {
+                if (response.isSuccessful()) {
+                    Pokemon pokemon = response.body();
+                    callback.onSuccess(pokemon);
+                } else {
+                    callback.onError("Erro na resposta da API");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Pokemon> call, Throwable t) {
+                callback.onError("Falha na chamada à API");
+            }
+        });
+    }
+
+
     public interface PokemonCallback {
         void onSuccess(Pokemon pokemon);
 

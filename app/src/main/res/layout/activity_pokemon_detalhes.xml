@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PokemonDetalhes">
+
+    <TextView
+        android:id="@+id/textName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="32dp"
+        android:text="Nome do Pokémon"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/detalhes"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textHeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="8dp"
+        android:text="Altura: 0 cm"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/detalhes"
+        app:layout_constraintTop_toBottomOf="@id/textName" />
+
+    <TextView
+        android:id="@+id/textWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="135dp"
+        android:layout_marginTop="8dp"
+        android:text="Peso: 0 kg"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/detalhes"
+        app:layout_constraintTop_toBottomOf="@id/textHeight" />
+
+    <ImageView
+        android:id="@+id/detalhes"
+        android:layout_width="159dp"
+        android:layout_height="139dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Adicione esses elementos ao layout de PokemonDetalhes -->
+
+    <TextView
+        android:id="@+id/textTypes"
+        android:layout_width="200dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="8dp"
+        android:text="Tipos: "
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/detalhes"
+        app:layout_constraintTop_toBottomOf="@+id/textWeight" />
+
+    <TextView
+        android:id="@+id/textMoves"
+        android:layout_width="376dp"
+        android:layout_height="142dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="15dp"
+        android:text="Movimentos: "
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detalhes" />
+
+
+    <!-- Outros elementos do layout, se houver -->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
