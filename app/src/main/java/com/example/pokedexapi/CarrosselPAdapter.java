@@ -10,7 +10,7 @@ import androidx.viewpager.widget.PagerAdapter;
 public class CarrosselPAdapter extends PagerAdapter {
 
     private Context context;
-    private int[] imageIds = {R.layout.banner_generation1, R.layout.banner_generation2, R.layout.banner_generation3};
+    private int[] imageIds = {R.layout.banner_generation1, R.layout.banner_generation2, R.layout.banner_generation3, R.layout.banner_generation4, R.layout.banner_generation5, R.layout.banner_generation6, R.layout.banner_generation7, R.layout.banner_generation8};
 
     public CarrosselPAdapter(Context context) {
         this.context = context;
