@@ -13,7 +13,7 @@ import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ViewPager viewPager;
+    public ViewPager viewPager;
     private CarrosselPAdapter pagerAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +22,10 @@ public class MainActivity extends AppCompatActivity {
 
         viewPager = findViewById(R.id.view_pagerP);
         pagerAdapter = new CarrosselPAdapter(this);
+
+        CarrosselScroller autoScroll = new CarrosselScroller(this, viewPager); // Substitua 'this' pelo contexto apropriado
+        autoScroll.startAutoScroll();
+
 
         viewPager.setAdapter(pagerAdapter);
 
